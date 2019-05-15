@@ -28,6 +28,9 @@ def linearRegression(alpha=0.01,num_iters=400):
     
     plotJ(J_history, num_iters)
     
+        
+    #plt.savefig('result.eps')
+    
     return mu,sigma,theta   #返回均值mu,标准差sigma,和学习的结果theta
     
    
@@ -57,6 +60,7 @@ def featureNormaliza(X):
 def plot_X1_X2(X):
     plt.scatter(X[:,0],X[:,1])
     plt.show()
+    plt.savefig('result.png')
 
 
 # 梯度下降算法
@@ -93,6 +97,7 @@ def plotJ(J_history,num_iters):
     plt.ylabel(u"代价值",fontproperties=font)
     plt.title(u"代价随迭代次数的变化",fontproperties=font)
     plt.show()
+    #plt.savefig('result.png')
 
 # 测试linearRegression函数
 def testLinearRegression():
