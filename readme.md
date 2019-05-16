@@ -787,12 +787,12 @@ def predict(Theta1,Theta2,X):
 - 如下图所示，假设决策边界如图，找其中的一个点，到`θ`上的投影为`p`,则![p||\theta || \geqslant 1](http://latex.codecogs.com/gif.latex?%5Clarge%20p%7C%7C%5Ctheta%20%7C%7C%20%5Cgeqslant%201)或者![p||\theta || \leqslant  - 1](http://latex.codecogs.com/gif.latex?%5Clarge%20p%7C%7C%5Ctheta%20%7C%7C%20%5Cleqslant%20-%201)，若是`p`很小，则需要![||\theta ||](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=%7C%7C%5Ctheta%20%7C%7C)很大，这与我们要求的`θ`使![||\theta || = \frac{1}{2}\sqrt {\theta _1^2 + \theta _2^2} ](http://latex.codecogs.com/gif.latex?%5Clarge%20%7C%7C%5Ctheta%20%7C%7C%20%3D%20%5Cfrac%7B1%7D%7B2%7D%5Csqrt%20%7B%5Ctheta%20_1%5E2%20&plus;%20%5Ctheta%20_2%5E2%7D)最小相违背，**所以**最后求的是`large margin`   
 ![enter description here][28]
 
-### 3、补充
+### 3、补充1（进一步理解）
 - 上下文中用到的![{\theta ^T}x](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=z%20%3D%20%7B%5Ctheta%20%5ET%7Dx)是齐次公式，与其他SVM教材的表示不一致，容易误导，本节中采用常用的表示方法，如下：  
 ![y=w^{T}x%2Bb](http://chart.apis.google.com/chart?cht=tx&chl={y=w^{T}x%2Bb})
 - 给出一张图来解释  
 ![enter description here][59]  
-其中，红色线是超平面，即最理想的划分，为什么在第2节有说明；y是数据点到超平面的距离；；
+其中，红色线是超平面，即最理想的划分，原因见在第2节；y是数据点到超平面的距离
 - 任意样本点到超平面的距离  
 ![r=\frac{\left|w^{T}x+b\right|}{\left\|w\right\|}](http://chart.apis.google.com/chart?cht=tx&chl={r=\frac{\left|w^{T}x%2Bb\right|}{\left\|w\right\|}})  
 为了描述方便，令正例和负例最靠近超平面的点为1和-1，其他正例的点大于1，其他负例的点小于-1，当然也可以是其他的值，公式表示为  
@@ -802,8 +802,24 @@ def predict(Theta1,Theta2,X):
 由第2节的分析，margin越大越理想，所以上式应取最大值。可将问题构造如下：  
 ![enter description here][61]  
 等价于  
-![enter description here][62]
+![enter description here][62]  
+由此得到SVM的基本型，是一个凸二次规划问题。
 
+### 4、补充2（求解）
+　　我们可以看到，上面的基本型目标函数是二次的，约束条件是线性的，这是一个凸二次规划问题。
+可以直接用现成的优化计算包求解。但若利用“对偶问题”来求解，会更高效。
+- 规划问题  
+已知目标函数和约束条件都为变量的线性函数，叫做-----线性规划问题。  
+目标函数为变量的二次函数和约束条件为变量的线性函数，叫做-----二次规划问题。  
+目标函数和约束条件都为非线性函数，叫做-----非线性规划问题。
+- 对偶问题求解更容易  
+SVM基本型的拉格朗日函数为  
+![L(x,\alpha,\beta)=\frac{1}{2}w^{T}w+\sum_{i=1}^{m}\lambda_{i}(1-y_{i}(w^{T}x_{i}+b))](http://chart.apis.google.com/chart?cht=tx&chl={L(x,\alpha,\beta)=\frac{1}{2}w^{T}w%2B\sum_{i=1}^{m}\lambda_{i}(1-y_{i}(w^{T}x_{i}+b))})  
+原始问题为  
+![\theta_{P}(x)=\max_{\lambda_{i}>0}L(x,\alpha,\beta)](http://chart.apis.google.com/chart?cht=tx&chl={\theta_{P}(x)=\max_{\lambda_{i}}L(x,\alpha,\beta)})  
+取最大值的目的是分割出违反约束条件的点，可得到可行解的上确界（不为无穷大）。  
+因为如果有某个违反约束条件的变量，λ趋于无穷大时，原始问题才能取到最大，即无穷大。  
+只有约束条件满足时，L才有最优值，为![L(x,\alpha,\beta)=\frac{1}{2}w^{T}w](http://chart.apis.google.com/chart?cht=tx&chl={L(x,\alpha,\beta)=\frac{1}{2}w^{T}w})
 
 ### 3、SVM Kernel（核函数）
 - 对于线性可分的问题，使用**线性核函数**即可
