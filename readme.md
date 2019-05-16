@@ -43,9 +43,11 @@
 	* [四、SVM支持向量机](#四svm支持向量机)
 		* [1、代价函数](#1代价函数)
 		* [2、Large Margin](#2large-margin)
-		* [3、SVM Kernel（核函数）](#3svm-kernel核函数)
-		* [4、使用中的模型代码](#4使用scikit-learn中的svm模型代码)
-		* [5、运行结果](#5运行结果)
+		* [3、补充1（进一步理解）](#3补充1)
+		* [4、补充2（求解）](#4补充2)
+		* [5、SVM Kernel（核函数）](#3svm-kernel核函数)
+		* [6、使用中的模型代码](#4使用scikit-learn中的svm模型代码)
+		* [7、运行结果](#5运行结果)
 	* [五、K-Means聚类算法](#五k-means聚类算法)
 		* [1、聚类过程](#1聚类过程)
 		* [2、目标函数](#2目标函数)
@@ -819,9 +821,14 @@ SVM基本型的拉格朗日函数为
 ![\theta_{P}(x)=\max_{\lambda_{i}>0}L(x,\alpha,\beta)](http://chart.apis.google.com/chart?cht=tx&chl={\theta_{P}(x)=\max_{\lambda_{i}}L(x,\alpha,\beta)})  
 取最大值的目的是分割出违反约束条件的点，可得到可行解的上确界（不为无穷大）。  
 因为如果有某个违反约束条件的变量，λ趋于无穷大时，原始问题才能取到最大，即无穷大。  
-只有约束条件满足时，L才有最优值，为![L(x,\alpha,\beta)=\frac{1}{2}w^{T}w](http://chart.apis.google.com/chart?cht=tx&chl={L(x,\alpha,\beta)=\frac{1}{2}w^{T}w})
+只有约束条件满足时，L才有最优值，为![L(x,\alpha,\beta)=\frac{1}{2}w^{T}w](http://chart.apis.google.com/chart?cht=tx&chl={L(x,\alpha,\beta)=\frac{1}{2}w^{T}w})  
+原问题最小化![\frac{1}{2}w^{T}w](http://chart.apis.google.com/chart?cht=tx&chl={\frac{1}{2}w^{T}w})等价于最小化![\theta_{P}(x)](http://chart.apis.google.com/chart?cht=tx&chl={\theta_{P}(x)})  
+因此，目标函数等价于：  
+![\min_{x}\max_{\lambda_{i}>0}L(x,\alpha,\beta)](http://chart.apis.google.com/chart?cht=tx&chl={\min_{x}\max_{\lambda_{i}>0}L(x,\alpha,\beta)})  
+- KKT条件  
 
-### 3、SVM Kernel（核函数）
+
+### 4、SVM Kernel（核函数）
 - 对于线性可分的问题，使用**线性核函数**即可
 - 对于线性不可分的问题，在逻辑回归中，我们是将`feature`映射为使用多项式的形式![1 + {x_1} + {x_2} + x_1^2 + {x_1}{x_2} + x_2^2](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=1%20%2B%20%7Bx_1%7D%20%2B%20%7Bx_2%7D%20%2B%20x_1%5E2%20%2B%20%7Bx_1%7D%7Bx_2%7D%20%2B%20x_2%5E2)，`SVM`中也有**多项式核函数**，但是更常用的是**高斯核函数**，也称为**RBF核**
 - 高斯核函数为：![f(x) = {e^{ - \frac{{||x - u|{|^2}}}{{2{\sigma ^2}}}}}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=f%28x%29%20%3D%20%7Be%5E%7B%20-%20%5Cfrac%7B%7B%7C%7Cx%20-%20u%7C%7B%7C%5E2%7D%7D%7D%7B%7B2%7B%5Csigma%20%5E2%7D%7D%7D%7D%7D)     
