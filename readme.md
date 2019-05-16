@@ -790,6 +790,19 @@ def predict(Theta1,Theta2,X):
 ### 3、补充
 - 上下文中用到的![{\theta ^T}x](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=z%20%3D%20%7B%5Ctheta%20%5ET%7Dx)是齐次公式，与其他SVM教材的表示不一致，容易误导，本节中采用常用的表示方法，如下：  
 ![y=w^{T}x%2Bb](http://chart.apis.google.com/chart?cht=tx&chl={y=w^{T}x%2Bb})
+- 给出一张图来解释  
+![enter description here][59]  
+其中，红色线是超平面，即最理想的划分，为什么在第2节有说明；y是数据点到超平面的距离；；
+- 任意样本点到超平面的距离  
+![r=\frac{\left|w^{T}x+b\right|}{\left\|w\right\|}](http://chart.apis.google.com/chart?cht=tx&chl={r=\frac{\left|w^{T}x%2Bb\right|}{\left\|w\right\|}})  
+为了描述方便，令正例和负例最靠近超平面的点为1和-1，其他正例的点大于1，其他负例的点小于-1，当然也可以是其他的值，公式表示为  
+![enter description here][60]
+- 两个最近点到超平面的距离公式为  
+![r=\frac{2}{\left\|w\right\|}](http://chart.apis.google.com/chart?cht=tx&chl={r=\frac{2}{\left\|w\right\|}})  
+由第2节的分析，margin越大越理想，所以上式应取最大值。可将问题构造如下：  
+![enter description here][61]  
+等价于  
+![enter description here][62]
 
 
 ### 3、SVM Kernel（核函数）
@@ -1331,3 +1344,7 @@ def multivariateGaussian(X,mu,Sigma2):
   [56]: ./images/AnomalyDetection_08.png "AnomalyDetection_08.png"
   [57]: ./images/AnomalyDetection_09.png "AnomalyDetection_09.png"
   [58]: ./images/AnomalyDetection_10.png "AnomalyDetection_10.png"
+  [59]: ./images/SVM_11.png "SVM_11.png"
+  [60]: ./images/SVM_12.png "SVM_12.png"
+  [61]: ./images/SVM_13.png "SVM_13.png"
+  [62]: ./images/SVM_14.png "SVM_14.png"
