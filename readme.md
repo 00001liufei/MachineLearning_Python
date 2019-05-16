@@ -840,9 +840,10 @@ SVM基本型的拉格朗日函数为
 - 求解  
 想要求L最小化时的w和b，不太容易。因此引入对偶变换，通过求λ乘子得到w、b。  
 先固定λ，让L分别对w和b求偏导。由KKT条件，可得等式：  
-![\frac{\partial L(w,b,\lambda)}{\partial b}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partial%20L(w,b,\lambda)}{\partial%20b}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0})
-![\frac{\partial L(w,b,\lambda)}{\partial w}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partial%20L(w,b,\lambda)}{\partial%20w}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0})
-
+![\frac{\partial L(w,b,\lambda)}{\partial b}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partial%20L(w,b,\lambda)}{\partial%20b}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0})  
+![\frac{\partial L(w,b,\lambda)}{\partial w}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partial%20L(w,b,\lambda)}{\partial%20w}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0})  
+现在只剩下一个λ了，将上式带入目标函数化简得到  
+![enter description here][63]  
 
 
 
@@ -1391,3 +1392,4 @@ def multivariateGaussian(X,mu,Sigma2):
   [60]: ./images/SVM_12.png "SVM_12.png"
   [61]: ./images/SVM_13.png "SVM_13.png"
   [62]: ./images/SVM_14.png "SVM_14.png"
+  [63]: ./images/SVM_15.png "SVM_15.png"
