@@ -61,7 +61,7 @@
 　　 原来的判别函数是用线性的![y=w^{T}x](http://chart.apis.google.com/chart?cht=tx&chl=y=w^{T}x)，
 逻辑回归目前用的是sigmoid函数，函数如下：
 
-![g(z)=\frac{1}{{1 + {e^{-z}}}}](http://chart.apis.google.com/chart?cht=tx&chl=g(z)=\frac{1}{{1+{e^{-z}}}})，
+![g(z) = \frac{1}{{1 + {e^{ - z}}}}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=%7Bh_%5Ctheta%20%7D%28x%29%20%3D%20%5Cfrac%7B1%7D%7B%7B1%20%2B%20%7Be%5E%7B%20-%20x%7D%7D%7D%7D)
 
 公式中，z是多元线性回归中的![w^{T}x](http://chart.apis.google.com/chart?cht=tx&chl=w^{T}x)
 
