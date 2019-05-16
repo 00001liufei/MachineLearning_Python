@@ -154,7 +154,6 @@ def featureNormaliza(X):
 ### 4、最终运行结果
 - 代价随迭代次数的变化   
 ![enter description here][1]
-![enter description here][59]
 
 
 ### 5、[使用scikit-learn库中的线性模型实现](/LinearRegression/LinearRegression_scikit-learn.py)
@@ -1291,4 +1290,3 @@ def multivariateGaussian(X,mu,Sigma2):
   [56]: ./images/AnomalyDetection_08.png "AnomalyDetection_08.png"
   [57]: ./images/AnomalyDetection_09.png "AnomalyDetection_09.png"
   [58]: ./images/AnomalyDetection_10.png "AnomalyDetection_10.png"
-  [59]: ./images/test_rasterization.pdf "test_rasterization.pdf"
