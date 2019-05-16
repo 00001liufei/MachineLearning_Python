@@ -847,16 +847,20 @@ SVM基本型的拉格朗日函数为
 现在只剩下一个λ了，只要求出λ就能得到w和b。  
 写成最优化形式：  
 ![enter description here][64]  
-求解上式得到λ。根据![w=\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i}](http://chart.apis.google.com/chart?cht=tx&chl={w=\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i}}),即可求出w。  
+求解上式得到λ。如何求解  
+根据![w=\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i}](http://chart.apis.google.com/chart?cht=tx&chl={w=\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i}}),即可求出w。  
 然后通过![b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}+\min_{y=1}(w^{T}x_{i})))](http://chart.apis.google.com/chart?cht=tx&chl={b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}%2B\min_{y=1}(w^{T}x_{i})))))  
 即可求出b。从而，得到超平面函数如下：  
 ![f(x)=(\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i})^{T}x+b=\sum_{i=1}^{m}\lambda_{i}y_{i}<x_{i},x>+b](http://chart.apis.google.com/chart?cht=tx&chl={f(x)=(\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i})^{T}x%2Bb=\sum_{i=1}^{m}\lambda_{i}y_{i}<x_{i},x>%2Bb})  
 
-
-
 ### 4、SVM Kernel（核函数）
 - 对于线性可分的问题，使用**线性核函数**即可
 - 对于线性不可分的问题，在逻辑回归中，我们是将`feature`映射为使用多项式的形式![1 + {x_1} + {x_2} + x_1^2 + {x_1}{x_2} + x_2^2](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=1%20%2B%20%7Bx_1%7D%20%2B%20%7Bx_2%7D%20%2B%20x_1%5E2%20%2B%20%7Bx_1%7D%7Bx_2%7D%20%2B%20x_2%5E2)，`SVM`中也有**多项式核函数**，但是更常用的是**高斯核函数**，也称为**RBF核**
+- SVM是将低维空间的非线性函数，映射到高维空间的线性函数  
+任意的非线性函数都可以通过高维空间的一个线性函数来表示。  
+这个线性函数就是原非线性函数在高维空间的分类超平面。  
+分类函数可以写为  
+![f(x)=\sum_{i=1}^{m}\lambda_{i}y_{i}<\theta(x_{i}),\theta(x)>+b](http://chart.apis.google.com/chart?cht=tx&chl={f(x)=\sum_{i=1}^{m}\lambda_{i}y_{i}<\theta(x_{i}),\theta(x)>%2Bb})  
 - 高斯核函数为：![f(x) = {e^{ - \frac{{||x - u|{|^2}}}{{2{\sigma ^2}}}}}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=f%28x%29%20%3D%20%7Be%5E%7B%20-%20%5Cfrac%7B%7B%7C%7Cx%20-%20u%7C%7B%7C%5E2%7D%7D%7D%7B%7B2%7B%5Csigma%20%5E2%7D%7D%7D%7D%7D)     
 假设如图几个点，
 ![enter description here][29]
