@@ -68,18 +68,27 @@
 sigmod函数图像如下：
 ![enter description here][3]
 
+　　 该函数具有很强的鲁棒性，并且将函数的输入范围(-∞,∞)映射到了输出的(0,1)之间且具有概率意义。具有概率意义是怎么理解呢:
+将一个样本输入到我们学习到的函数中,输出0.7,意思就是这个样本有70%的概率是正例,1-70%就是30%的概率为负例。
 
+　　 总结一下上边所讲:我们利用线性回归的办法来拟合然后设置阈值的办法容易受到离群值的影响,
+sigmod函数可以有效的帮助我们解决这一个问题,所以我们只要在拟合的时候把![y=w_{0}x_{0}%2Bw_{1}x_{1}%2B\cdots%2Bw_{n}x_{n}](http://chart.apis.google.com/chart?cht=tx&chl={y=w_{0}x_{0}%2Bw_{1}x_{1}%2B\cdots%2Bw_{n}x_{n}})
+代入sigmoid函数即可，公式如下：
 
+![g(z) = \frac{1}{{1 + {e^{ - w^{T}x}}}}](http://chart.apis.google.com/chart?cht=tx&chl={g(z)=\frac{1}{{{1}%2B{e^{-w^{T}x}}}}})
 
+　　 同时，由于g(x)的特性，它输出的结果不再是预测值，而是表示值预测为正例和负例的概率，表达式如下
 
+![P(y=0|w,x)=1-g(z)](http://chart.apis.google.com/chart?cht=tx&chl={P(y=0|w,x)=1-g(z)})
+![P(y=1|w,x)=g(z)](http://chart.apis.google.com/chart?cht=tx&chl={P(y=1|w,x)=g(z)})
 
+　　 全部预测正确的概率
+![P(y=1)=g(w,xi)_{y_{i}}*(1-g(w,xi)_{1-y_{i}}](http://chart.apis.google.com/chart?cht=tx&chl={(y=1)=g(w,xi)_{y_{i}}*(1-g(w,xi)_{1-y_{i}}})
 
+其中![y_{i}](http://chart.apis.google.com/chart?cht=tx&chl={y_{i}})为某一条样本的预测值,取值范围为0或者1.
 
-
-
-
-
-
+　　 到这里,我们得到一个回归函数,它不再像y=wT * x一样受离群值影响,
+他的输出结果是样本预测为正例的概率(0到1之间的小数).我们接下来解决第二个问题:选定一个阈值.
 
 
 ### 3、选定阈值
