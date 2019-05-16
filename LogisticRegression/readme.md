@@ -63,7 +63,7 @@
 
 ![g(z) = \frac{1}{{1 + {e^{ - z}}}}](http://chart.apis.google.com/chart?cht=tx&chl={g(z)=\frac{1}{{{1}+{e^{-z}}}}})
 ![g(z) = \frac{1}{{1 + {e^{ - z}}}}](http://chart.apis.google.com/chart?cht=tx&chl={g(z)=\frac{1}{{{1}{+}{e^{-z}}}}})
-![1+2](http://chart.apis.google.com/chart?cht=tx&chl={1++2})
+![1+2](http://chart.apis.google.com/chart?cht=tx&chl={\add{1}{2})
 公式中，z是多元线性回归中的![w^{T}x](http://chart.apis.google.com/chart?cht=tx&chl=w^{T}x)
 
 sigmod函数图像如下：
