@@ -39,9 +39,30 @@
 ![enter description here][1]
 
 <br/>　　上图中x轴为肿瘤大小，粉色线为回归得到的函数![{h_\theta}(x)](http://chart.apis.google.com/chart?cht=tx&chl=h_\theta}(x))
-，
+，绿色的线为阈值。
+
+<br/>　　 预测肿瘤大小还是一个回归问题,得到的结果(肿瘤的大小)也是一个连续型变量.
+通过设定阈值,就成功将回归问题转化为了分类问题.但是,这样做还存在一个问题.
+
+<br/>　　 我们上面的假设,依赖于所有的肿瘤大小都不会特别离谱,如果有一个超大的肿瘤在我们的例子中,
+阈值就很难设定.加入还是取平均大小为阈值,则会出现下图的情况:
+
+![enter description here][2]
+
+<br/>　　 从上边的例子可以看出,使用线性的函数来拟合规律后取阈值的办法是行不通的,
+行不通的原因在于拟合的函数太直,离群值(也叫异常值)对结果的影响过大,
+但是我们的整体思路是没有错的,错的是用了太"直"的拟合函数,如果我们用来拟合的函数是非线性的,不这么直,是不是就好一些呢?
+
+<br/>　　 所以我们下面来做两件事:
+- 找到一个办法解决掉回归的函数严重受离群值影响的办法.
+- 选定一个阈值.
+
+### 2、选择回归函数
+　　 原来的判别函数是用线性的![y=w^{T}x](http://chart.apis.google.com/chart?cht=tx&chl=y=w^{T}x)
 
 
+
+### 3、选定阈值
 
 
 
@@ -56,7 +77,7 @@
 
 
   [1]: ../images/logisticsRegression_04.jpg "logisticsRegression_04.jpg"
-
+  [1]: ../images/logisticsRegression_05.jpg "logisticsRegression_05.jpg"
 
 
 
