@@ -840,8 +840,13 @@ SVM基本型的拉格朗日函数为
 - 求解  
 想要求L最小化时的w和b，不太容易。因此引入对偶变换，通过求λ乘子得到w、b。  
 先固定λ，让L分别对w和b求偏导。由KKT条件，可得等式：  
-![\frac{\partialL(w,b,\lambda)}{\partialb}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partialL(w,b,\lambda)}{\partialb}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0})
-![\frac{\partialL(w,b,\lambda)}{\partialw}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partialL(w,b,\lambda)}{\partialw}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0})
+![\frac{\partial L(w,b,\lambda)}{\partial b}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partial%20L(w,b,\lambda)}{\partial%20b}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0})
+![\frac{\partial L(w,b,\lambda)}{\partial w}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partial%20L(w,b,\lambda)}{\partial%20w}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0})
+
+
+
+
+
 
 ### 4、SVM Kernel（核函数）
 - 对于线性可分的问题，使用**线性核函数**即可
