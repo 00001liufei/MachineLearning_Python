@@ -90,7 +90,7 @@ simhei是黑体，windows自带ttf格式。simsun需要格式转换，没有转�
 <br/>　　chart api基本格式: http://chart.apis.google.com/chart?<parameter 1\>&\<parameter 2\>&\<parameter n\>
 
 例子：
-<br/>![\int_{a}^{b}{ax}dt](http://chart.apis.google.com/chart?cht=tx&chl=\int_{a}^{b}{ax}dt)
+<br/>(http://chart.apis.google.com/chart?cht=tx&chl=\int_{a}^{b}{ax}dt)
 
 参数解释：
 - http://chart.apis.google.com/chart?      chart api调用地址
