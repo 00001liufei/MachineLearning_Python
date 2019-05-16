@@ -54,7 +54,8 @@
 
 ----------------------------------
 
-	[1]: ../images/logisticsRegression_04.jpg "logisticsRegression_04.jpg"
+
+  [1]: ../images/logisticsRegression_04.jpg "logisticsRegression_04.jpg"
 
 
 
