@@ -3,17 +3,27 @@ from __future__ import print_function
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.font_manager import FontProperties
-font = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=14)    # 解决windows环境下画图汉字乱码问题
-
+#font = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=14)    # 解决windows环境下画图汉字乱码问题
+# ttc无法生成中文矢量图，需要将其转换为ttf格式
+# 详见 https://www.zhihu.com/question/23541723
+# simhei黑体
+font = FontProperties(fname=r"c:\windows\fonts\simhei.ttf", size=14)
+# simsun宋体格式没转换成功
+#font = FontProperties(fname=r"..\fonts\simsun.ttf", size=14)
 
 def linearRegression(alpha=0.01,num_iters=400):
     print(u"加载数据...\n")
     
     data = loadtxtAndcsv_data("data.txt",",",np.float64)  #读取数据
-    X = data[:,0:-1]      # X对应0到倒数第2列                  
+    X = data[:,0:-1]      # X对应0和倒数第2列 
+    #print(X.shape[1])
+    #print(X[0,1])               
     y = data[:,-1]        # y对应最后一列  
     m = len(y)            # 总的数据条数
     col = data.shape[1]      # data的列数
+    #row = data.shape[0]
+    #print("col=", col)
+    #print("row=", row)
     
     X,mu,sigma = featureNormaliza(X)    # 归一化
     plot_X1_X2(X)         # 画图看一下归一化效果
@@ -27,10 +37,7 @@ def linearRegression(alpha=0.01,num_iters=400):
     theta,J_history = gradientDescent(X, y, theta, alpha, num_iters)
     
     plotJ(J_history, num_iters)
-    
         
-    #plt.savefig('result.eps')
-    
     return mu,sigma,theta   #返回均值mu,标准差sigma,和学习的结果theta
     
    
@@ -56,12 +63,12 @@ def featureNormaliza(X):
     
     return X_norm,mu,sigma
 
-# 画二维图
+# 画二维图，看归一化效果
 def plot_X1_X2(X):
     plt.scatter(X[:,0],X[:,1])
+    plt.savefig('../pdf_image/linearRegression_sample.pdf')
     plt.show()
-    plt.savefig('result.png')
-
+    
 
 # 梯度下降算法
 def gradientDescent(X,y,theta,alpha,num_iters):
@@ -69,8 +76,7 @@ def gradientDescent(X,y,theta,alpha,num_iters):
     n = len(theta)
     
     temp = np.matrix(np.zeros((n,num_iters)))   # 暂存每次迭代计算的theta，转化为矩阵形式
-    
-    
+        
     J_history = np.zeros((num_iters,1)) #记录每次迭代计算的代价值
     
     for i in range(num_iters):  # 遍历迭代次数    
@@ -93,17 +99,19 @@ def computerCost(X,y,theta):
 def plotJ(J_history,num_iters):
     x = np.arange(1,num_iters+1)
     plt.plot(x,J_history)
+    plt.title(u"代价随迭代次数的变化",fontproperties=font)    
     plt.xlabel(u"迭代次数",fontproperties=font) # 注意指定字体，要不然出现乱码问题
     plt.ylabel(u"代价值",fontproperties=font)
-    plt.title(u"代价随迭代次数的变化",fontproperties=font)
-    plt.show()
-    #plt.savefig('result.png')
+    plt.savefig("../pdf_image/linearRegression_result.pdf")
+    
+    #plt.show()
 
 # 测试linearRegression函数
 def testLinearRegression():
     mu,sigma,theta = linearRegression(0.01,400)
+    print(u"\n预测结果为：%f" % predict(mu, sigma, theta))
     #print u"\n计算的theta值为：\n",theta
-    #print u"\n预测结果为：%f"%predict(mu, sigma, theta)
+    
     
 # 测试学习效果（预测）
 def predict(mu,sigma,theta):

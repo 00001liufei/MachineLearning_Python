@@ -5,6 +5,7 @@
 
 ## 目录
 * [机器学习算法Python实现](#机器学习算法python实现)
+	* [零、字体问题](#零字体问题)
 	* [一、线性回归](#一线性回归)
 		* [1、代价函数](#1代价函数)
 		* [2、梯度下降算法](#2梯度下降算法)
@@ -69,6 +70,16 @@
 		* [5、多元高斯分布](#5多元高斯分布)
 		* [6、单元和多元高斯分布特点](#6单元和多元高斯分布特点)
 		* [7、程序运行结果](#7程序运行结果)
+
+## 零、[字体的问题](/fonts)
+ttc无法生成中文矢量图，需要将其转换为ttf格式,详见 https://www.zhihu.com/question/23541723
+- 代码修改如下：
+```
+#font = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=14)
+font = FontProperties(fname=r"c:\windows\fonts\simhei.ttf", size=14)
+```
+simhei是黑体，windows自带ttf格式
+simsun需要格式转换，没有转换成功。	
 
 ## 一、[线性回归](/LinearRegression)
 - [全部代码](/LinearRegression/LinearRegression.py)
@@ -150,6 +161,7 @@ def featureNormaliza(X):
     return X_norm,mu,sigma
 ```
 - 注意预测的时候也需要均值归一化数据
+- 注意预测时只对变量空间进行归一化，值
 
 ### 4、最终运行结果
 - 代价随迭代次数的变化   
@@ -168,7 +180,7 @@ from sklearn.preprocessing import StandardScaler    #引入缩放的包
     scaler = StandardScaler()   
     scaler.fit(X)
     x_train = scaler.transform(X)
-    x_test = scaler.transform(np.array([1650,3]))
+    x_test = scaler.transform(np.array([1650,3]))	# 有错误，不知道错在哪
 ```
 - 线性模型拟合
 ```
