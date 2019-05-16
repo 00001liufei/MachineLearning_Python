@@ -816,17 +816,24 @@ def predict(Theta1,Theta2,X):
 目标函数和约束条件都为非线性函数，叫做-----非线性规划问题。
 - 对偶问题求解更容易  
 SVM基本型的拉格朗日函数为  
-![L(x,\alpha,\beta)=\frac{1}{2}w^{T}w+\sum_{i=1}^{m}\lambda_{i}(1-y_{i}(w^{T}x_{i}+b))](http://chart.apis.google.com/chart?cht=tx&chl={L(x,\alpha,\beta)=\frac{1}{2}w^{T}w%2B\sum_{i=1}^{m}\lambda_{i}(1-y_{i}(w^{T}x_{i}+b))})  
+![L(w,\alpha,\beta)=\frac{1}{2}w^{T}w+\sum_{i=1}^{m}\lambda_{i}(1-y_{i}(w^{T}x_{i}+b))](http://chart.apis.google.com/chart?cht=tx&chl={L(w,\alpha,\beta)=\frac{1}{2}w^{T}w%2B\sum_{i=1}^{m}\lambda_{i}(1-y_{i}(w^{T}x_{i}+b))})  
 原始问题为  
-![\theta_{P}(x)=\max_{\lambda_{i}>0}L(x,\alpha,\beta)](http://chart.apis.google.com/chart?cht=tx&chl={\theta_{P}(x)=\max_{\lambda_{i}}L(x,\alpha,\beta)})  
+![\theta_{P}(w)=\max_{\lambda_{i}>0}L(x,\alpha,\beta)](http://chart.apis.google.com/chart?cht=tx&chl={\theta_{P}(w)=\max_{\lambda_{i}}L(x,\alpha,\beta)})  
 取最大值的目的是分割出违反约束条件的点，可得到可行解的上确界（不为无穷大）。  
 因为如果有某个违反约束条件的变量，λ趋于无穷大时，原始问题才能取到最大，即无穷大。  
-只有约束条件满足时，L才有最优值，为![L(x,\alpha,\beta)=\frac{1}{2}w^{T}w](http://chart.apis.google.com/chart?cht=tx&chl={L(x,\alpha,\beta)=\frac{1}{2}w^{T}w})  
-原问题最小化![\frac{1}{2}w^{T}w](http://chart.apis.google.com/chart?cht=tx&chl={\frac{1}{2}w^{T}w})等价于最小化![\theta_{P}(x)](http://chart.apis.google.com/chart?cht=tx&chl={\theta_{P}(x)})  
+只有约束条件满足时，L才有最优值，为![L(w,\alpha,\beta)=\frac{1}{2}w^{T}w](http://chart.apis.google.com/chart?cht=tx&chl={L(w,\alpha,\beta)=\frac{1}{2}w^{T}w})  
+原问题最小化![\frac{1}{2}w^{T}w](http://chart.apis.google.com/chart?cht=tx&chl={\frac{1}{2}w^{T}w})等价于最小化![\theta_{P}(w)](http://chart.apis.google.com/chart?cht=tx&chl={\theta_{P}(w)})  
 因此，目标函数等价于：  
-![\min_{x}\max_{\lambda_{i}>0}L(x,\alpha,\beta)](http://chart.apis.google.com/chart?cht=tx&chl={\min_{x}\max_{\lambda_{i}>0}L(x,\alpha,\beta)})  
-- KKT条件  
-
+![\min_{w}\max_{\lambda_{i}>0}L(x,\alpha,\beta)](http://chart.apis.google.com/chart?cht=tx&chl={\min_{w}\max_{\lambda_{i}>0}L(x,\alpha,\beta)})  
+上式的对偶问题正好相反：  
+![\max_{\lambda_{i}>0}\min_{w}L(x,\alpha,\beta)](http://chart.apis.google.com/chart?cht=tx&chl={\max_{\lambda_{i}>0}\min_{w}L(x,\alpha,\beta)})  
+先取最小集，再分割出满足约束条件的点。对偶问题一般更容易解。
+- KKT条件是指满足Slater条件下，一个非线性规划问题能有最优解的充要条件  
+本问题的KKT条件如下  
+![\bigtriangledown_{w}L(w^{*},\alpha^{*},\beta^{*})](http://chart.apis.google.com/chart?cht=tx&chl={\bigtriangledown_{w}L(w^{*},\alpha^{*},\beta^{*})})  
+![\lambda_{i}^{*}(1-y_{i}(w^{T}x_{i}+b))=0](http://chart.apis.google.com/chart?cht=tx&chl={\lambda_{i}^{*}(1-y_{i}(w^{T}x_{i}%2Bb))=0})  
+![(1-y_{i}(w^{T}x_{i}+b))\leq0](http://chart.apis.google.com/chart?cht=tx&chl={(1-y_{i}(w^{T}x_{i}+b))\leq0})  
+![\lambda_{i}^{*}\geq0](http://chart.apis.google.com/chart?cht=tx&chl={\lambda_{i}^{*}\geq0})  
 
 ### 4、SVM Kernel（核函数）
 - 对于线性可分的问题，使用**线性核函数**即可
