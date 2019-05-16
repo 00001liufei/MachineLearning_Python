@@ -1,9 +1,11 @@
 逻辑回归（logistics regression）
 =========
 
+[![MIT license](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/lawlite19/MachineLearning_Python/blob/master/LICENSE)
+
 ## 目录
-* [一、分类和回归的区别]
-* [sigmoid函数]
+* [一、分类和回归的区别](#一分类和回归的区别)
+
 
 
 ## 一、分类和回归的区别
