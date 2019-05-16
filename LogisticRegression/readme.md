@@ -58,7 +58,25 @@
 - 选定一个阈值.
 
 ### 2、选择回归函数
-　　 原来的判别函数是用线性的![y=w^{T}x](http://chart.apis.google.com/chart?cht=tx&chl=y=w^{T}x)
+　　 原来的判别函数是用线性的![y=w^{T}x](http://chart.apis.google.com/chart?cht=tx&chl=y=w^{T}x)，
+逻辑回归目前用的是sigmoid函数，函数如下：
+![g(z)=\frac{1}{1+e^{-z}}](http://chart.apis.google.com/chart?cht=tx&chl=g(z)=\frac{1}{1+e^{-z}})，
+公式中，z是多元线性回归中的![w^{T}x](http://chart.apis.google.com/chart?cht=tx&chl=w^{T}x)
+
+sigmod函数图像如下：
+![enter description here][3]
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -77,8 +95,8 @@
 
 
   [1]: ../images/logisticsRegression_04.jpg "logisticsRegression_04.jpg"
-  [1]: ../images/logisticsRegression_05.jpg "logisticsRegression_05.jpg"
-
+  [2]: ../images/logisticsRegression_05.jpg "logisticsRegression_05.jpg"
+  [3]: ../images/logisticsRegression_06.jpg "logisticsRegression_06.jpg"
 
 
 
