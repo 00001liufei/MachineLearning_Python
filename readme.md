@@ -1291,4 +1291,4 @@ def multivariateGaussian(X,mu,Sigma2):
   [56]: ./images/AnomalyDetection_08.png "AnomalyDetection_08.png"
   [57]: ./images/AnomalyDetection_09.png "AnomalyDetection_09.png"
   [58]: ./images/AnomalyDetection_10.png "AnomalyDetection_10.png"
-  [59]: ./images/test_rasterization.eps "test_rasterization.eps"
+  [59]: ./images/test_rasterization.pdf "test_rasterization.pdf"
