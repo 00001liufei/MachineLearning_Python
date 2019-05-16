@@ -18,7 +18,7 @@
 		* [1、代价函数](#1代价函数)
 		* [2、梯度](#2梯度)
 		* [3、正则化](#3正则化)
-		* [4、S型函数（即）](#4s型函数即)
+		* [4、Sigmoid函数（即）](#4Sigmoid函数即)
 		* [5、映射为多项式](#5映射为多项式)
 		* [6、使用的优化方法](#6使用scipy的优化方法)
 		* [7、运行结果](#7运行结果)
@@ -248,7 +248,7 @@ from sklearn.preprocessing import StandardScaler    #引入缩放的包
 ### 3、正则化
 - 目的是为了防止过拟合
 - 在代价函数中加上一项![J(\theta ) =  - \frac{1}{m}\sum\limits_{i = 1}^m {[{y^{(i)}}\log ({h_\theta }({x^{(i)}}) + (1 - } {y^{(i)}})\log (1 - {h_\theta }({x^{(i)}})] + \frac{\lambda }{{2m}}\sum\limits_{j = 1}^n {\theta _j^2} ](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=J%28%5Ctheta%20%29%20%3D%20%20-%20%5Cfrac%7B1%7D%7Bm%7D%5Csum%5Climits_%7Bi%20%3D%201%7D%5Em%20%7B%5B%7By%5E%7B%28i%29%7D%7D%5Clog%20%28%7Bh_%5Ctheta%20%7D%28%7Bx%5E%7B%28i%29%7D%7D%29%20%2B%20%281%20-%20%7D%20%7By%5E%7B%28i%29%7D%7D%29%5Clog%20%281%20-%20%7Bh_%5Ctheta%20%7D%28%7Bx%5E%7B%28i%29%7D%7D%29%5D%20%2B%20%5Cfrac%7B%5Clambda%20%7D%7B%7B2m%7D%7D%5Csum%5Climits_%7Bj%20%3D%201%7D%5En%20%7B%5Ctheta%20_j%5E2%7D%20)
-- 注意j是重1开始的，因为theta(0)为一个常数项，X中最前面一列会加上1列1，所以乘积还是theta(0),feature没有关系，没有必要正则化
+- 注意j是重1开始的，因为theta(0)为一个常数项，X中最前面一列会加上1列1，所以乘积还是theta(0),feature没有关系，没有必要正则化？？
 - 正则化后的代价：
 ```
 # 代价函数
@@ -279,7 +279,7 @@ def gradient(initial_theta,X,y,inital_lambda):
     return grad  
 ```
 
-### 4、S型函数（即![{{h_\theta }(x)}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=%7B%7Bh_%5Ctheta%20%7D%28x%29%7D)）
+### 4、Sigmoid函数（即![{{h_\theta }(x)}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=%7B%7Bh_%5Ctheta%20%7D%28x%29%7D)）
 - 实现代码：
 ```
 # S型函数    
@@ -291,7 +291,8 @@ def sigmoid(z):
 ```
 
 ### 5、映射为多项式
-- 因为数据的feture可能很少，导致偏差大，所以创造出一些feture结合
+- 因为数据的feture可能很少，导致偏差大，所以创造出一些feture结合；也就是增加n的数量，![y=w_{0}x_{0}%2Bw_{1}x_{1}%2B\cdots%2Bw_{n}x_{n}](http://chart.apis.google.com/chart?cht=tx&chl={y=w_{0}x_{0}%2Bw_{1}x_{1}%2B\cdots%2Bw_{n}x_{n}})
+- 不影响最终结果，要注意预测数据也要进行相同的映射操作
 - eg:映射为2次方的形式:![1 + {x_1} + {x_2} + x_1^2 + {x_1}{x_2} + x_2^2](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=1%20%2B%20%7Bx_1%7D%20%2B%20%7Bx_2%7D%20%2B%20x_1%5E2%20%2B%20%7Bx_1%7D%7Bx_2%7D%20%2B%20x_2%5E2)
 - 实现代码：
 ```
@@ -786,6 +787,11 @@ def predict(Theta1,Theta2,X):
 - 如下图所示，假设决策边界如图，找其中的一个点，到`θ`上的投影为`p`,则![p||\theta || \geqslant 1](http://latex.codecogs.com/gif.latex?%5Clarge%20p%7C%7C%5Ctheta%20%7C%7C%20%5Cgeqslant%201)或者![p||\theta || \leqslant  - 1](http://latex.codecogs.com/gif.latex?%5Clarge%20p%7C%7C%5Ctheta%20%7C%7C%20%5Cleqslant%20-%201)，若是`p`很小，则需要![||\theta ||](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=%7C%7C%5Ctheta%20%7C%7C)很大，这与我们要求的`θ`使![||\theta || = \frac{1}{2}\sqrt {\theta _1^2 + \theta _2^2} ](http://latex.codecogs.com/gif.latex?%5Clarge%20%7C%7C%5Ctheta%20%7C%7C%20%3D%20%5Cfrac%7B1%7D%7B2%7D%5Csqrt%20%7B%5Ctheta%20_1%5E2%20&plus;%20%5Ctheta%20_2%5E2%7D)最小相违背，**所以**最后求的是`large margin`   
 ![enter description here][28]
 
+### 3、补充
+- 上下文中用到的![{\theta ^T}x](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=z%20%3D%20%7B%5Ctheta%20%5ET%7Dx)是齐次公式，与其他SVM教材的表示不一致，容易误导，本节中采用常用的表示方法，如下：  
+![y=w^{T}x%2Bb](http://chart.apis.google.com/chart?cht=tx&chl={y=w^{T}x%2Bb})
+
+
 ### 3、SVM Kernel（核函数）
 - 对于线性可分的问题，使用**线性核函数**即可
 - 对于线性不可分的问题，在逻辑回归中，我们是将`feature`映射为使用多项式的形式![1 + {x_1} + {x_2} + x_1^2 + {x_1}{x_2} + x_2^2](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=1%20%2B%20%7Bx_1%7D%20%2B%20%7Bx_2%7D%20%2B%20x_1%5E2%20%2B%20%7Bx_1%7D%7Bx_2%7D%20%2B%20x_2%5E2)，`SVM`中也有**多项式核函数**，但是更常用的是**高斯核函数**，也称为**RBF核**
@@ -842,6 +848,8 @@ def predict(Theta1,Theta2,X):
 ![enter description here][32]
 - 线性不可分的决策边界：   
 ![enter description here][33]
+
+### 6、
 
 --------------------------
 

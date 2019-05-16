@@ -15,6 +15,8 @@ def LogisticRegression():
     plot_data(X,y)  # 作图
     
     X = mapFeature(X[:,0],X[:,1])           #映射为多项式
+    #col = X.shape[1]
+    #print(col)
     initial_theta = np.zeros((X.shape[1],1))#初始化theta
     initial_lambda = 0.1                    #初始化正则化系数，一般取0.01,0.1,1.....
     
@@ -29,9 +31,12 @@ def LogisticRegression():
     - args是其余测参数，以元组的形式传入，最后会将最小化costFunction的theta返回 
     '''
     result = optimize.fmin_bfgs(costFunction, initial_theta, fprime=gradient, args=(X,y,initial_lambda))    
+    #print(result)
     p = predict(X, result)   #预测
+    #print(p)
     print(u'在训练集上的准确度为%f%%'%np.mean(np.float64(p==y)*100))   # 与真实值比较，p==y返回True，转化为float   
     
+    # 恢复为原始数据
     X = data[:,0:-1]
     y = data[:,-1]    
     plotDecisionBoundary(result,X,y)    #画决策边界  
@@ -125,7 +130,9 @@ def plotDecisionBoundary(theta,X,y):
             z[i,j] = np.dot(mapFeature(u[i].reshape(1,-1),v[j].reshape(1,-1)),theta)    # 计算对应的值，需要map
     
     z = np.transpose(z)
-    plt.contour(u,v,z,[0,0.01],linewidth=2.0)   # 画等高线，范围在[0,0.01]，即近似为决策边界
+    #print(z[10:40,10:40])
+    # [0,0.01]不理解？？
+    plt.contour(u,v,z,[0,0.02],linewidth=2.0)   # 画等高线，范围在[0,0.01]，即近似为决策边界
     #plt.legend()
     plt.show()
 
@@ -135,6 +142,7 @@ def predict(X,theta):
     p = np.zeros((m,1))
     p = sigmoid(np.dot(X,theta))    # 预测的结果，是个概率值
     
+    # 0.5是阈值
     for i in range(m):
         if p[i] > 0.5:  #概率大于0.5预测为1，否则预测为0
             p[i] = 1
