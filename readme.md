@@ -72,14 +72,13 @@
 		* [7、程序运行结果](#7程序运行结果)
 
 ## 零、[字体问题](/fonts)
-ttc无法生成中文矢量图，需要将其转换为ttf格式,详见 https://www.zhihu.com/question/23541723
+ttc无法生成中文矢量图，需要将其转换为ttf格式，详见 https://www.zhihu.com/question/23541723
 - 代码修改如下：
 ```
 #font = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=14)
 font = FontProperties(fname=r"c:\windows\fonts\simhei.ttf", size=14)
 ```
-simhei是黑体，windows自带ttf格式
-simsun需要格式转换，没有转换成功。	
+simhei是黑体，windows自带ttf格式。simsun需要格式转换，没有转换成功。	
 
 ## 一、[线性回归](/LinearRegression)
 - [全部代码](/LinearRegression/LinearRegression.py)
