@@ -87,10 +87,10 @@ simhei是黑体，windows自带ttf格式。simsun需要格式转换，没有转�
 ### 2、公式输入
 
 　　采用latex语言和Google Chart API来输入公式，详细教程参考：https://www.haijd.net/archive/computer/google/google_chart_api/api.html
-<br/>　　chart api基本格式:<p>http://chart.apis.google.com/chart?<parameter 1\>&\<parameter 2\>&\<parameter n\></p>
+<br/>　　chart api基本格式: http://chart.apis.google.com/chart?<parameter 1\>&\<parameter 2\>&\<parameter n\>
 
 例子：
-<br/>http://chart.apis.google.com/chart?cht=tx&chl=\int_{a}^{b}{ax}dt
+<br/>![\int_{a}^{b}{ax}dt](http://chart.apis.google.com/chart?cht=tx&chl=\int_{a}^{b}{ax}dt)
 
 参数解释：
 - http://chart.apis.google.com/chart?      chart api调用地址
