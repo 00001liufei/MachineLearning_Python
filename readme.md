@@ -818,7 +818,7 @@ def predict(Theta1,Theta2,X):
 SVM基本型的拉格朗日函数为  
 ![L(w,b,\lambda)=\frac{1}{2}w^{T}w+\sum_{i=1}^{m}\lambda_{i}(1-y_{i}(w^{T}x_{i}+b))](http://chart.apis.google.com/chart?cht=tx&chl={L(w,b,\lambda)=\frac{1}{2}w^{T}w%2B\sum_{i=1}^{m}\lambda_{i}(1-y_{i}(w^{T}x_{i}+b))})  
 原始问题为  
-![\theta_{P}(w)=\max_{\lambda_{i}>0}L(x,b,\lambda)](http://chart.apis.google.com/chart?cht=tx&chl={\theta_{P}(w)=\max_{\lambda_{i}}L(x,b,\lambda)})  
+![\theta_{P}(w)=\max_{\lambda_{i}>0}L(x,b,\lambda)](http://chart.apis.google.com/chart?cht=tx&chl={\theta_{P}(w)=\max_{\lambda_{i}}L(w,b,\lambda)})  
 取最大值的目的是分割出违反约束条件的点，可得到可行解的上确界（不为无穷大）。  
 因为如果有某个违反约束条件的变量，λ趋于无穷大时，原始问题才能取到最大，即无穷大。  
 只有约束条件满足时，L才有最优值，为![L(w,b,\lambda)=\frac{1}{2}w^{T}w](http://chart.apis.google.com/chart?cht=tx&chl={L(w,b,\lambda)=\frac{1}{2}w^{T}w})  
@@ -830,14 +830,18 @@ SVM基本型的拉格朗日函数为
 先取最小集，再分割出满足约束条件的点。对偶问题一般更容易解。
 - KKT条件是指满足Slater条件下，一个非线性规划问题能有最优解的充要条件  
 本问题的KKT条件如下  
-![\bigtriangledown_{w,b}L(w^{*},b^{*},\lambda^{*})=0](http://chart.apis.google.com/chart?cht=tx&chl={\bigtriangledown_{w}L(w^{*},b^{*},\lambda^{*})=0})  
+![\bigtriangledown_{w,b}L(w^{*},b^{*},\lambda^{*})=0](http://chart.apis.google.com/chart?cht=tx&chl={\bigtriangledown_{w,b}L(w^{*},b^{*},\lambda^{*})=0})  
 ![\lambda_{i}^{*}(1-y_{i}(w^{T}x_{i}+b))=0](http://chart.apis.google.com/chart?cht=tx&chl={\lambda_{i}^{*}(1-y_{i}(w^{T}x_{i}%2Bb))=0})  
 ![(1-y_{i}(w^{T}x_{i}+b))\leq0](http://chart.apis.google.com/chart?cht=tx&chl={(1-y_{i}(w^{T}x_{i}%2Bb))\leq0})  
 ![\lambda_{i}^{*}\geq0](http://chart.apis.google.com/chart?cht=tx&chl={\lambda_{i}^{*}\geq0})  
 带*的同时为原始问题和对偶问题的解。  
 根据KKT条件，原问题最大间隔超平面的充分必要条件为  
 ![\lambda_{i}^{*}(1-y_{i}(w^{T}x_{i}+b))=0](http://chart.apis.google.com/chart?cht=tx&chl={\lambda_{i}^{*}(1-y_{i}(w^{T}x_{i}%2Bb))=0})  
-
+- 求解  
+想要求L最小化时的w和b，不太容易。因此引入对偶变换，通过求λ乘子得到w、b。  
+先固定λ，让L分别对w和b求偏导。由KKT条件，可得等式：  
+![\frac{\partialL(w,b,\lambda)}{\partialb}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partialL(w,b,\lambda)}{\partialb}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0})
+![\frac{\partialL(w,b,\lambda)}{\partialw}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partialL(w,b,\lambda)}{\partialw}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0})
 
 ### 4、SVM Kernel（核函数）
 - 对于线性可分的问题，使用**线性核函数**即可
