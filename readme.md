@@ -842,10 +842,15 @@ SVM基本型的拉格朗日函数为
 先固定λ，让L分别对w和b求偏导。由KKT条件，可得等式：  
 ![\frac{\partial L(w,b,\lambda)}{\partial b}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partial%20L(w,b,\lambda)}{\partial%20b}=\sum_{i=1}^{m}\lambda_{i}y_{i}=0})  
 ![\frac{\partial L(w,b,\lambda)}{\partial w}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0](http://chart.apis.google.com/chart?cht=tx&chl={\frac{\partial%20L(w,b,\lambda)}{\partial%20w}=w-\sum_{i=1}^{m}\lambda_{i}y_{i}w_{i}=0})  
-现在只剩下一个λ了，将上式带入目标函数化简得到  
+将上式带入目标函数化简得到  
 ![enter description here][63]  
-
-
+现在只剩下一个λ了，只要求出λ就能得到w和b。  
+写成最优化形式：  
+![enter description here][64]  
+求解上式得到λ。根据![w=\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i}](http://chart.apis.google.com/chart?cht=tx&chl={w=\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i}}),即可求出w。  
+然后通过![b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}+\min_{y=1}(w^{T}x_{i})))](http://chart.apis.google.com/chart?cht=tx&chl={b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}%2B\min_{y=1}(w^{T}x_{i})))))  
+即可求出b。从而，得到超平面函数如下：  
+![f(x)=(\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i})^{T}x+b=\sum_{i=1}^{m}\lambda_{i}y_{i}<x_{i},x>+b](http://chart.apis.google.com/chart?cht=tx&chl={f(x)=(\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i})^{T}x%2Bb=\sum_{i=1}^{m}\lambda_{i}y_{i}<x_{i},x>%2Bb})  
 
 
 
@@ -1393,3 +1398,4 @@ def multivariateGaussian(X,mu,Sigma2):
   [61]: ./images/SVM_13.png "SVM_13.png"
   [62]: ./images/SVM_14.png "SVM_14.png"
   [63]: ./images/SVM_15.png "SVM_15.png"
+  [64]: ./images/SVM_16.png "SVM_16.png"
