@@ -118,7 +118,7 @@ sigmod函数可以有效的帮助我们解决这一个问题,所以我们只要�
 
 　　 用log对公式变形：
 
-![l(\theta)=\log{L(\theta)}\\\quad =\sum_{i=1}^{m}\left(y^{(i)}\log{h_{\theta}(x^{(i)})}+(1-y^{(i)})\log{(1-h_{\theta}(x^{(i)}))} \right)](http://chart.apis.google.com/chart?cht=tx&chl={l(\theta)=\log{L(\theta)}\\\quad =\sum_{i=1}^{m}\left(y^{(i)}\log{h_{\theta}(x^{(i)})}%2B(1-y^{(i)})\log{(1-h_{\theta}(x^{(i)}))} \right)})
+![l(\theta)=\log{L(\theta)}\\\quad =\sum_{i=1}^{m}\left(y^{(i)}\log{h_{\theta}(x^{(i)})}+(1-y^{(i)})\log{(1-h_{\theta}(x^{(i)}))} \right)](http://chart.apis.google.com/chart?cht=tx&chl={l(\theta)=\log{L(\theta)}\\\quad=\sum_{i=1}^{m}\left(y^{(i)}\log{h_{\theta}(x^{(i)})}%2B(1-y^{(i)})\log{(1-h_{\theta}(x^{(i)}))} \right)})
 
 　　 得到的这个函数越大,证明我们得到的W就越好.因为在函数最优化的时候习惯让一个函数越小越好,所以我们在前边加一个负号.得到公式如下:
 
