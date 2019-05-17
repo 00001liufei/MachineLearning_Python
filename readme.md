@@ -880,10 +880,21 @@ SVM是将低维空间的非线性函数，映射到高维空间的线性函数
 上面两个式子有很多相似的地方，只要把前面的式子的某几个维度线性缩放一下，然后加上一个常数维度，就得到上面的式子。
 如果用这个式子代替分类函数的内积项，那么分类函数变为：  
 ![\sum_{i=1}^{n}\alpha_{i}y_{i}(<x_{1},x_{2}>+1)^{2}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Calpha_%7Bi%7Dy_%7Bi%7D(%3Cx_%7B1%7D%2Cx_%7B2%7D%3E%2B1)%5E%7B2%7D)  
-
-
-
-
+对偶变换的最优化形式也进行相应变化，这里不列公式了。  
+这样训练出来的特征，只是w和b与原来形式下的不同了，但最终的超平面函数（分类函数）是不变的。  
+又注意到，映射向量![enter description here][73]的内积![<\varphi (x_{1}),\varphi (x_{2})>](http://chart.apis.google.com/chart?cht=tx&chl=%3C%5Cvarphi%20(x_%7B1%7D)%2C%5Cvarphi%20(x_%7B2%7D)%3E)
+的结果相等。这样可以直接在原来的低维空间中进行计算，而不需要显式地写出映射后的结果。
+- 核函数种类  
+核函数的概念下，分类函数可写为：  
+![\sum_{i=1}^{n}\alpha_{i}y_{i}\kappa (x_{i},x)+b](http://chart.apis.google.com/chart?cht=tx&chl=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Calpha_%7Bi%7Dy_%7Bi%7D%5Ckappa%20(x_%7Bi%7D%2Cx)%2Bb)  
+相应的对偶优化形式  
+![enter description here][74]  
+可以理解为，核函数的泰勒展开式，对应于高维空间。  
+常用的核函数  
+-- 多项式核  
+-- 高斯核  
+![enter description here][75]
+-- 线性核，即自身
 - 高斯核函数为：![f(x) = {e^{ - \frac{{||x - u|{|^2}}}{{2{\sigma ^2}}}}}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=f%28x%29%20%3D%20%7Be%5E%7B%20-%20%5Cfrac%7B%7B%7C%7Cx%20-%20u%7C%7B%7C%5E2%7D%7D%7D%7B%7B2%7B%5Csigma%20%5E2%7D%7D%7D%7D%7D)     
 假设如图几个点，
 ![enter description here][29]
