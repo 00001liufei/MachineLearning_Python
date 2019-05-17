@@ -892,9 +892,11 @@ SVM是将低维空间的非线性函数，映射到高维空间的线性函数
 可以理解为，核函数的泰勒展开式，对应于高维空间。  
 常用的核函数  
 -- 多项式核  
--- 高斯核  
-![enter description here][75]
--- 线性核，即自身
+-- 高斯核![enter description here][75]  
+![enter description here][76]  
+-- 线性核，即低维空间自身  
+SVM的一个例子  
+![enter description here][77]  
 - 高斯核函数为：![f(x) = {e^{ - \frac{{||x - u|{|^2}}}{{2{\sigma ^2}}}}}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=f%28x%29%20%3D%20%7Be%5E%7B%20-%20%5Cfrac%7B%7B%7C%7Cx%20-%20u%7C%7B%7C%5E2%7D%7D%7D%7B%7B2%7B%5Csigma%20%5E2%7D%7D%7D%7D%7D)     
 假设如图几个点，
 ![enter description here][29]
@@ -1440,3 +1442,13 @@ def multivariateGaussian(X,mu,Sigma2):
   [65]: ./images/SVM_17.png "SVM_17.png"
   [66]: ./images/SVM_18.fig "SVM_18.fig"
   [67]: ./images/SVM_19.jpg "SVM_19.jpg"
+  [68]: ./images/SVM_20.png "SVM_20.png"
+  [69]: ./images/SVM_21.png "SVM_21.png"
+  [70]: ./images/SVM_22.jpg "SVM_22.jpg"
+  [71]: ./images/SVM_23.jpg "SVM_23.jpg"
+  [72]: ./images/SVM_24.jpg "SVM_24.jpg"
+  [73]: ./images/SVM_25.jpg "SVM_25.jpg"
+  [74]: ./images/SVM_26.jpg "SVM_26.jpg"
+  [75]: ./images/SVM_27.jpg "SVM_27.jpg"
+  [76]: ./images/SVM_28.jpg "SVM_28.jpg"
+  [77]: ./images/SVM_29.jpg "SVM_29.jpg"
