@@ -852,6 +852,7 @@ SVM基本型的拉格朗日函数为
 然后通过![b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}+\min_{y=1}(w^{T}x_{i})))](http://chart.apis.google.com/chart?cht=tx&chl={b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}%2B\min_{y=1}(w^{T}x_{i})))))  
 即可求出b。从而，得到超平面函数如下：  
 ![f(x)=(\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i})^{T}x+b=\sum_{i=1}^{m}\lambda_{i}y_{i}<x_{i},x>+b](http://chart.apis.google.com/chart?cht=tx&chl={f(x)=(\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i})^{T}x%2Bb=\sum_{i=1}^{m}\lambda_{i}y_{i}<x_{i},x>%2Bb})  
+其中x是测试样本，xi是训练样本  
 
 ### 4、SVM Kernel（核函数）
 - 对于线性可分的问题，使用**线性核函数**即可
@@ -861,6 +862,8 @@ SVM基本型的拉格朗日函数为
 这个线性函数就是原非线性函数在高维空间的分类超平面。  
 分类函数可以写为  
 ![f(x)=\sum_{i=1}^{m}\lambda_{i}y_{i}<\theta(x_{i}),\theta(x)>+b](http://chart.apis.google.com/chart?cht=tx&chl={f(x)=\sum_{i=1}^{m}\lambda_{i}y_{i}<\theta(x_{i}),\theta(x)>%2Bb})  
+由于低维映射到高维，有可能产生维度灾难。在高维上计算内积将是非常困难的。因此引入了核函数的方法，使计算发生在低维。  
+
 - 高斯核函数为：![f(x) = {e^{ - \frac{{||x - u|{|^2}}}{{2{\sigma ^2}}}}}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=f%28x%29%20%3D%20%7Be%5E%7B%20-%20%5Cfrac%7B%7B%7C%7Cx%20-%20u%7C%7B%7C%5E2%7D%7D%7D%7B%7B2%7B%5Csigma%20%5E2%7D%7D%7D%7D%7D)     
 假设如图几个点，
 ![enter description here][29]
