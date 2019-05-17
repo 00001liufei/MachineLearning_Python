@@ -872,14 +872,14 @@ SVM是将低维空间的非线性函数，映射到高维空间的线性函数
 对应的超平面应该是一个圆圈，可以用一个二次曲线表示，方程如下![enter description here][69]  
 可以映射到五维空间，新坐标系可写为![enter description here][70]  
 映射后三维空间显示![enter description here][66]  
-设两个向量![x_{1}=(\eta_{1},\eta_{2})^{T}](http:://chart.apis.google.com/chart?cht=tx&chl=%20x_%7B1%7D=(%5Ceta_%7B1%7D,%5Ceta_%7B2%7D)%5E%7BT%7D)
+设两个向量![x_{1}=(\eta_{1},\eta_{2})^{T}](http:://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=%20x_%7B1%7D=(%5Ceta_%7B1%7D,%5Ceta_%7B2%7D)%5E%7BT%7D)
 和![x_{2}=(\xi_{1},\xi_{2})^{T}](http:://chart.apis.google.com/chart?cht=tx&chl={x_%7B2%7D=(%5Cxi_%7B1%7D,%5Cxi_%7B2%7D)%5E%7BT%7D})
 映射后的内积为：  
 ![enter description here][71]  
 另外，注意到![enter description here][72]  
 上面两个式子有很多相似的地方，只要把前面的式子的某几个维度线性缩放一下，然后加上一个常数维度，就得到上面的式子。
 如果用这个式子代替分类函数的内积项，那么分类函数变为：  
-![\sum_{i=1}^{n}\alpha_{i}y_{i}(<x_{1},x_{2}>+1)^{2}](http:://chart.apis.google.com/chart?cht=tx&chl={%5Csum_%7Bi=1%7D%5E%7Bn%7D%5Calpha_%7Bi%7Dy_%7Bi%7D(%3Cx_%7B1%7D,x_%7B2%7D%3E+1)%5E%7B2%7D})  
+![\sum_{i=1}^{n}\alpha_{i}y_{i}(<x_{1},x_{2}>+1)^{2}](http:://chart.apis.google.com/chart?cht=tx&chl=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Calpha_%7Bi%7Dy_%7Bi%7D(%3Cx_%7B1%7D%2Cx_%7B2%7D%3E%2B1)%5E%7B2%7D)  
 
 
 
