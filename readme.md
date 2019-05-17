@@ -860,6 +860,7 @@ SVM基本型的拉格朗日函数为
 - SVM是将低维空间的非线性函数，映射到高维空间的线性函数  
 任意的非线性函数都可以通过高维空间的一个线性函数来表示。  
 这个线性函数就是原非线性函数在高维空间的分类超平面。  
+![enter description here][65]![enter description here][66]  
 分类函数可以写为  
 ![f(x)=\sum_{i=1}^{m}\lambda_{i}y_{i}<\theta(x_{i}),\theta(x)>+b](http://chart.apis.google.com/chart?cht=tx&chl={f(x)=\sum_{i=1}^{m}\lambda_{i}y_{i}<\theta(x_{i}),\theta(x)>%2Bb})  
 由于低维映射到高维，有可能产生维度灾难。在高维上计算内积将是非常困难的。因此引入了核函数的方法，使计算发生在低维。  
@@ -1406,3 +1407,5 @@ def multivariateGaussian(X,mu,Sigma2):
   [62]: ./images/SVM_14.png "SVM_14.png"
   [63]: ./images/SVM_15.png "SVM_15.png"
   [64]: ./images/SVM_16.png "SVM_16.png"
+  [65]: ./images/SVM_17.png "SVM_17.png"
+  [66]: ./images/SVM_18.fig "SVM_18.fig"
