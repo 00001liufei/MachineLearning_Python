@@ -849,7 +849,7 @@ SVM基本型的拉格朗日函数为
 ![enter description here][64]  
 求解上式得到λ。如何求解  
 根据![w=\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i}](http://chart.apis.google.com/chart?cht=tx&chl={w=\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i}}),即可求出w。  
-然后通过![b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}+\min_{y=1}(w^{T}x_{i})))](http://chart.apis.google.com/chart?cht=tx&chl={b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}%2B\min_{y=1}(w^{T}x_{i})))))  
+然后通过![b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}+\min_{y=1}(w^{T}x_{i})))](http://chart.apis.google.com/chart?cht=tx&chl={b=\frac{1}{2}(\max_{y=-1}(w^{T}x_{i}%2B\min_{y=1}(w^{T}x_{i})))))（为了保证约束条件成立）  
 即可求出b。从而，得到超平面函数如下：  
 ![f(x)=(\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i})^{T}x+b=\sum_{i=1}^{m}\lambda_{i}y_{i}<x_{i},x>+b](http://chart.apis.google.com/chart?cht=tx&chl={f(x)=(\sum_{i=1}^{m}\lambda_{i}y_{i}x_{i})^{T}x%2Bb=\sum_{i=1}^{m}\lambda_{i}y_{i}<x_{i},x>%2Bb})  
 其中x是测试样本，xi是训练样本  
@@ -857,13 +857,32 @@ SVM基本型的拉格朗日函数为
 ### 4、SVM Kernel（核函数）
 - 对于线性可分的问题，使用**线性核函数**即可
 - 对于线性不可分的问题，在逻辑回归中，我们是将`feature`映射为使用多项式的形式![1 + {x_1} + {x_2} + x_1^2 + {x_1}{x_2} + x_2^2](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=1%20%2B%20%7Bx_1%7D%20%2B%20%7Bx_2%7D%20%2B%20x_1%5E2%20%2B%20%7Bx_1%7D%7Bx_2%7D%20%2B%20x_2%5E2)，`SVM`中也有**多项式核函数**，但是更常用的是**高斯核函数**，也称为**RBF核**
-- SVM是将低维空间的非线性函数，映射到高维空间的线性函数  
+- 用核函数的意义  
+SVM是将低维空间的非线性函数，映射到高维空间的线性函数  
 任意的非线性函数都可以通过高维空间的一个线性函数来表示。  
 这个线性函数就是原非线性函数在高维空间的分类超平面。  
-![enter description here][65]![enter description here][66]  
+![enter description here][65]  
 分类函数可以写为  
 ![f(x)=\sum_{i=1}^{m}\lambda_{i}y_{i}<\theta(x_{i}),\theta(x)>+b](http://chart.apis.google.com/chart?cht=tx&chl={f(x)=\sum_{i=1}^{m}\lambda_{i}y_{i}<\theta(x_{i}),\theta(x)>%2Bb})  
-由于低维映射到高维，有可能产生维度灾难。在高维上计算内积将是非常困难的。因此引入了核函数的方法，使计算发生在低维。  
+对偶变换的最优化形式  
+![enter description here][67]  
+将数据映射到新的空间，看似解决了问题，实际并不是。由于低维映射到高维，有可能产生维度灾难。在高维上计算内积将是非常困难的甚至无法计算。因此引入了核（kernel）函数，使计算发生在低维。  
+- 核函数为什么能起到这样的作用？  
+从最简单的二维平面样本点的例子开始，如下图![enter description here][68]  
+对应的超平面应该是一个圆圈，可以用一个二次曲线表示，方程如下![enter description here][69]  
+可以映射到五维空间，新坐标系可写为![enter description here][70]  
+映射后三维空间显示![enter description here][66]  
+设两个向量![x_{1}=(\eta_{1},\eta_{2})^{T}](http:://chart.apis.google.com/chart?cht=tx&chl={%20x_%7B1%7D=(%5Ceta_%7B1%7D,%5Ceta_%7B2%7D)%5E%7BT%7D})
+和![x_{2}=(\xi_{1},\xi_{2})^{T}](http:://chart.apis.google.com/chart?cht=tx&chl={x_%7B2%7D=(%5Cxi_%7B1%7D,%5Cxi_%7B2%7D)%5E%7BT%7D})
+映射后的内积为：  
+![enter description here][71]  
+另外，注意到![enter description here][72]  
+上面两个式子有很多相似的地方，只要把前面的式子的某几个维度线性缩放一下，然后加上一个常数维度，就得到上面的式子。
+如果用这个式子代替分类函数的内积项，那么分类函数变为：  
+![\sum_{i=1}^{n}\alpha_{i}y_{i}(<x_{1},x_{2}>+1)^{2}](http:://chart.apis.google.com/chart?cht=tx&chl={%5Csum_%7Bi=1%7D%5E%7Bn%7D%5Calpha_%7Bi%7Dy_%7Bi%7D(%3Cx_%7B1%7D,x_%7B2%7D%3E+1)%5E%7B2%7D})  
+
+
+
 
 - 高斯核函数为：![f(x) = {e^{ - \frac{{||x - u|{|^2}}}{{2{\sigma ^2}}}}}](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=f%28x%29%20%3D%20%7Be%5E%7B%20-%20%5Cfrac%7B%7B%7C%7Cx%20-%20u%7C%7B%7C%5E2%7D%7D%7D%7B%7B2%7B%5Csigma%20%5E2%7D%7D%7D%7D%7D)     
 假设如图几个点，
@@ -1409,3 +1428,4 @@ def multivariateGaussian(X,mu,Sigma2):
   [64]: ./images/SVM_16.png "SVM_16.png"
   [65]: ./images/SVM_17.png "SVM_17.png"
   [66]: ./images/SVM_18.fig "SVM_18.fig"
+  [67]: ./images/SVM_19.jpg "SVM_19.jpg"
