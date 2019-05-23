@@ -925,6 +925,9 @@ SVM的一个例子
  ![J(\theta ) = C\sum\limits_{i = 1}^m {[{y^{(i)}}\cos {t_1}({\theta ^T}{f^{(i)}}) + (1 - {y^{(i)}})\cos {t_0}({\theta ^T}{f^{(i)}})} ] + \frac{1}{2}\sum\limits_{j = 1}^{\text{n}} {\theta _j^2} ](http://chart.apis.google.com/chart?cht=tx&chs=1x0&chf=bg,s,FFFFFF00&chco=000000&chl=J%28%5Ctheta%20%29%20%3D%20C%5Csum%5Climits_%7Bi%20%3D%201%7D%5Em%20%7B%5B%7By%5E%7B%28i%29%7D%7D%5Ccos%20%7Bt_1%7D%28%7B%5Ctheta%20%5ET%7D%7Bf%5E%7B%28i%29%7D%7D%29%20%2B%20%281%20-%20%7By%5E%7B%28i%29%7D%7D%29%5Ccos%20%7Bt_0%7D%28%7B%5Ctheta%20%5ET%7D%7Bf%5E%7B%28i%29%7D%7D%29%7D%20%5D%20%2B%20%5Cfrac%7B1%7D%7B2%7D%5Csum%5Climits_%7Bj%20%3D%201%7D%5E%7B%5Ctext%7Bn%7D%7D%20%7B%5Ctheta%20_j%5E2%7D%20)
  - 如果![{\theta ^T}f \geqslant 0](http://latex.codecogs.com/gif.latex?%5Clarge%20%7B%5Ctheta%20%5ET%7Df%20%5Cgeqslant%200)，==》预测`y=1`
 
+- 软间隔  
+链接：https://blog.csdn.net/robin_xu_shuai/article/details/77051258
+
 ### 6、使用`scikit-learn`中的`SVM`模型代码
 - [全部代码](/SVM/SVM_scikit-learn.py)
 - 线性可分的,指定核函数为`linear`：
@@ -1090,6 +1093,8 @@ def runKMeans(X,initial_centroids,max_iters,plot_process):
 
 ## 六、PCA主成分分析（降维）
 - [全部代码](/PCA/PCA.py)
+- [详细介绍](https://blog.csdn.net/hustqb/article/details/78394058)
+- [详细介绍](https://blog.csdn.net/program_developer/article/details/80632779)
 
 ### 1、用处
 - 数据压缩（Data Compression）,使程序运行更快
